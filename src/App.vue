@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import Filters from "./components/Filters.vue";
-import Navbar from "./components/Navbar.vue";
+import Filters from "./components/Filters";
+import Navbar from "./components/Navbar";
+
 export default {
   name: "app",
   components: {
