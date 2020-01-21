@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   data() {
@@ -75,13 +74,9 @@ export default {
         advertiser: this.advertiser
       };
 
-      axios
-        .post("http://localhost:3000/search", this.params)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
+      this.$router.push({
+          name: "searchResult",
+          params: { params: this.params }
         });
     }
   }

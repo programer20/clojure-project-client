@@ -18,6 +18,12 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/searchResult',
+    name: 'searchResult',
+    component: () => import('../views/SearchResult.vue'),
+    props: true
   }
 ]
 
