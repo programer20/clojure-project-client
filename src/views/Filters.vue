@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="container text-center">
+    <h1 class="my-5">Pretraga</h1>
     <b-container class="bv-example-row">
       <b-row class="justify-content-md-center">
         <b-col col lg="4">
@@ -75,7 +76,7 @@ export default {
       };
 
       axios
-        .post("http://localhost:3000/vue", this.params)
+        .post("http://localhost:3000/search", this.params)
         .then(res => {
           console.log(res);
         })

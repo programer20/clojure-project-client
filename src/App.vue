@@ -1,23 +1,16 @@
 <template>
   <div>
-    <Navbar/>
-    <div id="app">
-      <h1>Pretraga</h1>
-      <div class="container my-5">
-        <Filters />
-      </div>
-    </div>
+    <Navbar />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Filters from "./components/Filters";
 import Navbar from "./components/Navbar";
 
 export default {
   name: "app",
   components: {
-    Filters,
     Navbar
   }
 };
