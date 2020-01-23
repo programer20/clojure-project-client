@@ -24,6 +24,16 @@
       </b-row>
       <b-row class="justify-content-md-center my-4">
         <b-col col lg="4">
+          <h4>Kvadratura</h4>
+          <b-form-input v-model="minSurface" type="number" min="0" step="10" placeholder="Od"></b-form-input>
+        </b-col>
+        <b-col col lg="4">
+          <h4>Kvadratura</h4>
+          <b-form-input v-model="maxSurface" type="number" min="0" step="10" placeholder="Do"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="justify-content-md-center my-4">
+        <b-col col lg="4">
           <h4>Oglašivač</h4>
           <b-form-group>
             <b-form-checkbox-group id="checkbox-group" v-model="advertiser">
@@ -52,6 +62,8 @@ export default {
       cityPart: null,
       minPrice: null,
       maxPrice: null,
+      minSurface: null,
+      maxSurface: null,
       advertiser: []
     };
   },
@@ -66,11 +78,24 @@ export default {
         this.maxPrice = 0;
       }
 
-      this.params = {
-        city: this.city.toLowerCase(),
-        cityPart: this.cityPart.toLowerCase(),
+      if(!this.minSurface){
+        this.minSurface = 0;
+      }
+
+      if(!this.maxSurface){
+        this.maxSurface = 0;
+      }
+
+      if(this.minPrice > this.maxPrice || this.minSurface > this.maxSurface) {
+        alert("Invalid search parameters!")
+      } else {
+        this.params = {
+        city: this.city == null ? this.city : this.city.toLowerCase(),
+        cityPart: this.cityPart == null ? this.cityPart : this.cityPart.toLowerCase(),
         minPrice: this.minPrice,
         maxPrice: this.maxPrice,
+        minSurface: parseInt(this.minSurface),
+        maxSurface: parseInt(this.maxSurface),
         advertiser: this.advertiser
       };
 
@@ -78,6 +103,8 @@ export default {
           name: "searchResult",
           params: { params: this.params }
         });
+      }
+      
     }
   }
 };

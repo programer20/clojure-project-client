@@ -10,7 +10,36 @@
           <h5>{{ data.length }} pronadjenih oglasa</h5>
         </b-col>
         <b-col cols="2">
-          <b-button class="float-right" variant="outline-primary">Pretplati se</b-button>
+          <b-button @click="$bvModal.show('bv-modal-example')" class="float-right" variant="outline-primary">Pretplati se</b-button>
+          <b-modal id="bv-modal-example" centered title="Pretplata" hide-footer>
+            <p>Da li zelite da se pretplatite na pretragu sa sledecim parametrima:</p>
+            <b-row>
+              <b-col>
+                <p>Grad: {{params.city.toUpperCase()}}</p>
+              </b-col>
+              <b-col>
+                <p>Deo grada: {{params.cityPart.toUpperCase()}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col>
+                <p>Cena od: {{params.minPrice}}</p>
+              </b-col>
+              <b-col>
+                <p>Cena do: {{params.maxPrice}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col>
+                <p>Kvadratura od: {{params.minSurface}}</p>
+              </b-col>
+              <b-col>
+                <p>Kvadratura do: {{params.maxSurface}}</p>
+              </b-col>
+            </b-row>
+            <b-button variant="success" class="float-right mt-3 ml-2" @click="subscribe">Da</b-button>
+            <b-button variant="danger" class="float-right mt-3" @click="$bvModal.hide('bv-modal-example')">Ne</b-button>
+          </b-modal>
         </b-col>
       </b-row>
       <b-table
@@ -71,6 +100,12 @@ export default {
   computed: {
     rows() {
       return this.data.length;
+    }
+  },
+  methods: {
+    subscribe() {
+      console.log("subscribe");
+      this.$bvModal.hide('bv-modal-example');
     }
   }
 };
