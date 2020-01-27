@@ -45,7 +45,7 @@
       </b-row>
       <b-row class="justify-content-md-center my-4">
         <b-col col lg="8">
-          <b-button @click="sendRequest" block variant="outline-primary">Pretraži</b-button>
+          <b-button @click="sendRequest" block variant="outline-primary">Pretraži <b-icon icon="search"/></b-button>
         </b-col>
       </b-row>
     </b-container>
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -69,29 +68,26 @@ export default {
   },
   methods: {
     sendRequest() {
-
-      if(!this.minPrice){
+      if (!this.minPrice) {
         this.minPrice = 0;
       }
 
-      if(!this.maxPrice){
+      if (!this.maxPrice) {
         this.maxPrice = 0;
       }
 
-      if(!this.minSurface){
+      if (!this.minSurface) {
         this.minSurface = 0;
       }
 
-      if(!this.maxSurface){
+      if (!this.maxSurface) {
         this.maxSurface = 0;
       }
 
-      if(this.minPrice > this.maxPrice || this.minSurface > this.maxSurface) {
-        alert("Invalid search parameters!")
-      } else {
-        this.params = {
+      this.params = {
         city: this.city == null ? this.city : this.city.toLowerCase(),
-        cityPart: this.cityPart == null ? this.cityPart : this.cityPart.toLowerCase(),
+        cityPart:
+          this.cityPart == null ? this.cityPart : this.cityPart.toLowerCase(),
         minPrice: this.minPrice,
         maxPrice: this.maxPrice,
         minSurface: parseInt(this.minSurface),
@@ -100,11 +96,9 @@ export default {
       };
 
       this.$router.push({
-          name: "searchResult",
-          params: { params: this.params }
-        });
-      }
-      
+        name: "searchResult",
+        params: { params: this.params }
+      });
     }
   }
 };

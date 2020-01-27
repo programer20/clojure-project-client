@@ -23,7 +23,12 @@
           v-model="input.password"
           placeholder="Password"
         />
-        <b-alert v-show="loginError" show variant="danger" class="mt-3">Incorrect username or password!</b-alert>
+        <b-alert
+          v-show="loginError"
+          show
+          variant="danger"
+          class="mt-3"
+        >Incorrect username or password!</b-alert>
       </div>
       <div class="mx-auto">
         <input
@@ -40,10 +45,10 @@
 
 <script>
 import axios from "axios";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
-  components: {},
   data() {
     return {
       loginError: false,
@@ -54,14 +59,17 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["setId"]),
     login() {
-      axios.post("http://localhost:3000/login", this.input)
-      .then(() => {
+      axios
+        .post("http://localhost:3000/login", this.input)
+        .then((res) => {
+          this.setId(res.data[0].id);
           this.$router.push("/");
-      })
-      .catch(
-          this.loginError = true
-      );
+        })
+        .catch(() => {
+          this.loginError = true;
+        });
     }
   }
 };
