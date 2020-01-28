@@ -4,67 +4,67 @@
       <b-spinner variant="primary" label="Spinning" style="width: 4rem; height: 4rem;"></b-spinner>
     </div>
     <div class="my-4 mx-4" v-show="signal">
-      <h2 class="my-3 text-center">Rezultat pretrage</h2>
+      <h2 class="my-3 text-center">Search result</h2>
       <b-row>
         <b-col cols="10">
-          <h5>{{ data.length }} pronadjenih oglasa</h5>
+          <h5>{{ data.length }} results found</h5>
         </b-col>
         <b-col cols="2">
           <b-button
             @click="$bvModal.show('bv-modal-example')"
             class="float-right"
             variant="outline-primary"
-          >Pretplati se <b-icon icon="inbox-fill"/></b-button>
-          <b-modal id="bv-modal-example" centered title="Pretplata" hide-footer>
+          >Subscribe <b-icon icon="inbox-fill"/></b-button>
+          <b-modal id="bv-modal-example" centered title="Subscribe" hide-footer>
             <div v-show="subscribeSignal">
-              <p>Da li zelite da se pretplatite na pretragu sa sledecim parametrima:</p>
+              <p>Would You like to be notified when new parameter-matched apartment appears?</p>
               <b-row>
                 <b-col>
-                  <p>Grad: {{params.city == null ? " " : params.city.toUpperCase()}}</p>
+                  <p>City: {{params.city == null ? " " : params.city.toUpperCase()}}</p>
                 </b-col>
                 <b-col>
-                  <p>Deo grada: {{params.cityPart == null ? " " : params.cityPart.toUpperCase()}}</p>
+                  <p>Location: {{params.cityPart == null ? " " : params.cityPart.toUpperCase()}}</p>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
-                  <p>Cena od: {{params.minPrice}}</p>
+                  <p>Price from: {{params.minPrice}} EUR</p>
                 </b-col>
                 <b-col>
-                  <p>Cena do: {{params.maxPrice}}</p>
+                  <p>Price to: {{params.maxPrice}} EUR</p>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
-                  <p>Kvadratura od: {{params.minSurface}}</p>
+                  <p>Area from: {{params.minSurface}} m2</p>
                 </b-col>
                 <b-col>
-                  <p>Kvadratura do: {{params.maxSurface}}</p>
+                  <p>Area to: {{params.maxSurface}} m2</p>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
                   <p>
-                    Oglasivac:
+                    Advertiser:
                     <span
                       v-for="advertiser in params.advertiser"
                       :key="advertiser"
-                    >{{advertiser}}</span>
+                    > {{advertiser}}</span>
                   </p>
                 </b-col>
               </b-row>
-              <b-button variant="primary" class="float-right mt-3 ml-2" @click="subscribe">Da</b-button>
-              <b-button variant="secondary" class="float-right mt-3" @click="$bvModal.hide('bv-modal-example')">Ne</b-button>
+              <b-button variant="primary" class="float-right mt-3 ml-2" @click="subscribe">Yes</b-button>
+              <b-button variant="secondary" class="float-right mt-3" @click="$bvModal.hide('bv-modal-example')">No</b-button>
             </div>
             <div  class="d-flex justify-content-center mb-3">
               <b-spinner v-show="!subscribeSignal" variant="primary" label="Spinning"></b-spinner>
             </div>
           </b-modal>
-          <b-modal id="bv-modal-success" centered title="Obavestenje" hide-footer>
-            <p>Uspesno ste se pretplatili!</p>
+          <b-modal id="bv-modal-success" centered title="Message" hide-footer>
+            <p>Successful subscription!</p>
           </b-modal>
-          <b-modal id="bv-modal-error" centered title="Obavestenje" hide-footer>
-            <p>Doslo je do greske!</p>
+          <b-modal id="bv-modal-error" centered title="Error" hide-footer>
+            <p>Subscription failed. Please try again!</p>
           </b-modal>
         </b-col>
       </b-row>
@@ -79,7 +79,8 @@
         :current-page="currentPage"
       >
         <template v-slot:cell(href)="data">
-          <a :href=data.value>{{ data.value }}</a></template>
+          <a :href=data.value>{{ data.value }}</a>
+        </template>
       </b-table>
       <b-pagination
         v-model="currentPage"
@@ -103,10 +104,10 @@ export default {
       subscribeSignal: true,
       data: [],
       columns: [
-        { key: "name", label: "Naziv" },
-        { key: "price", label: "Cena" },
-        { key: "surface", label: "Površina" },
-        { key: "location", label: "Lokacija" },
+        { key: "name", label: "Name" },
+        { key: "price", label: "Price" },
+        { key: "surface", label: "Area" },
+        { key: "location", label: "Location" },
         { key: "href", label: "URL" }
       ],
       currentPage: 1,

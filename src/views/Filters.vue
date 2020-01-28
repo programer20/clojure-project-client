@@ -1,51 +1,51 @@
 <template>
   <div class="container text-center">
-    <h1 class="my-5">Pretraga</h1>
+    <h1 class="my-5">Filters</h1>
     <b-container class="bv-example-row">
       <b-row class="justify-content-md-center">
         <b-col col lg="4">
-          <h4>Grad</h4>
-          <b-form-input v-model="city" placeholder="Grad"></b-form-input>
+          <h4>City</h4>
+          <b-form-input v-model="city" placeholder="City"></b-form-input>
         </b-col>
         <b-col col lg="4">
-          <h4>Deo grada</h4>
-          <b-form-input v-model="cityPart" placeholder="Deo grada"></b-form-input>
-        </b-col>
-      </b-row>
-      <b-row class="justify-content-md-center my-4">
-        <b-col col lg="4">
-          <h4>Cena</h4>
-          <b-form-input v-model="minPrice" type="number" min="0" step="10" placeholder="Od"></b-form-input>
-        </b-col>
-        <b-col col lg="4">
-          <h4>Cena</h4>
-          <b-form-input v-model="maxPrice" type="number" min="0" step="10" placeholder="Do"></b-form-input>
+          <h4>Location</h4>
+          <b-form-input v-model="cityPart" placeholder="Location"></b-form-input>
         </b-col>
       </b-row>
       <b-row class="justify-content-md-center my-4">
         <b-col col lg="4">
-          <h4>Kvadratura</h4>
-          <b-form-input v-model="minSurface" type="number" min="0" step="10" placeholder="Od"></b-form-input>
+          <h4>Price</h4>
+          <b-form-input v-model="minPrice" type="number" min="0" step="10" placeholder="From"></b-form-input>
         </b-col>
         <b-col col lg="4">
-          <h4>Kvadratura</h4>
-          <b-form-input v-model="maxSurface" type="number" min="0" step="10" placeholder="Do"></b-form-input>
+          <h4>Price</h4>
+          <b-form-input v-model="maxPrice" type="number" min="0" step="10" placeholder="To"></b-form-input>
         </b-col>
       </b-row>
       <b-row class="justify-content-md-center my-4">
         <b-col col lg="4">
-          <h4>Oglašivač</h4>
+          <h4>Area</h4>
+          <b-form-input v-model="minSurface" type="number" min="0" step="10" placeholder="From"></b-form-input>
+        </b-col>
+        <b-col col lg="4">
+          <h4>Area</h4>
+          <b-form-input v-model="maxSurface" type="number" min="0" step="10" placeholder="To"></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="justify-content-md-center my-4">
+        <b-col col lg="4">
+          <h4>Advertiser</h4>
           <b-form-group>
             <b-form-checkbox-group id="checkbox-group" v-model="advertiser">
-              <b-form-checkbox value="agencija">Agencija</b-form-checkbox>
-              <b-form-checkbox value="vlasnik">Vlasnik</b-form-checkbox>
+              <b-form-checkbox value="agencija">Agency</b-form-checkbox>
+              <b-form-checkbox value="vlasnik">Owner</b-form-checkbox>
             </b-form-checkbox-group>
           </b-form-group>
         </b-col>
       </b-row>
       <b-row class="justify-content-md-center my-4">
         <b-col col lg="8">
-          <b-button @click="sendRequest" block variant="outline-primary">Pretraži <b-icon icon="search"/></b-button>
+          <b-button @click="sendRequest" block variant="outline-primary">Search <b-icon icon="search"/></b-button>
         </b-col>
       </b-row>
     </b-container>
