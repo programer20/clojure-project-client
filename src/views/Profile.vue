@@ -82,6 +82,12 @@
               :per-page="perPage"
               aria-controls="my-table"
             ></b-pagination>
+            <b-modal id="bv-modal-success" centered title="Message" hide-footer>
+              <p>Subscription successfully deleted!</p>
+            </b-modal>
+            <b-modal id="bv-modal-error" centered title="Error" hide-footer>
+            <p>Delete failed. Please try again!</p>
+          </b-modal>
           </b-tab>
         </b-tabs>
       </b-col>
@@ -133,18 +139,29 @@ export default {
         console.log(err);
       });
 
-    axios
-      .get("http://localhost:3000/subscriptions/" + this.userId)
-      .then(res => {
-        this.subscriptions = res.data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.getSubscriptions();
   },
   methods: {
     deleteSubscription(subscriptionId) {
       console.log(subscriptionId);
+      axios.delete("http://localhost:3000/delete-subscription/" + subscriptionId)
+      .then(() => {
+        this.$bvModal.show("bv-modal-success");
+        this.getSubscriptions();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
+    getSubscriptions() {
+      axios
+      .get("http://localhost:3000/subscriptions/" + this.userId)
+      .then(res => {
+        this.subscriptions = res.data;
+      })
+      .catch(() => {
+        this.$bvModal.show("bv-modal-error");
+      });
     }
   }
 };
