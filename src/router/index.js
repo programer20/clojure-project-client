@@ -12,23 +12,35 @@ const routes = [
   {
     path: '/registration',
     name: 'registration',
-    component: () => import('../views/Registration.vue')
+    component: () => import('../views/Registration.vue'),
+    meta: {
+      requiresVisitor: true
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
+    meta: {
+      requiresVisitor: true
+    }
   },
   {
     path: '/searchResult',
     name: 'searchResult',
     component: () => import('../views/SearchResult.vue'),
-    props: true
+    props: true,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/profile',
     name: 'profile',
-    component: () => import('../views/Profile.vue')
+    component: () => import('../views/Profile.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 

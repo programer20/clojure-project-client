@@ -3,7 +3,8 @@ const state = {
 };
 
 const getters = {
-    userId: (state) => state.userId
+    userId: (state) => state.userId,
+    signedIn: (state) => state.userId !== null
 };
 
 const actions = {
