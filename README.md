@@ -1,18 +1,15 @@
-<div style="text-align:center">
-    <img src="src/assets/logo.png">
-</div>
+![vue logo](src/assets/logo.png)
 
 # Apartment Search
 
 The goal of this project is to help in searching apartment ads. After registration and login, user can search for apartments by multiple parameters like city, location, price, area and advertiser.
 
-<img src="src/assets/1.jpg">
-
-<img src="src/assets/2.jpg">
+![img1](src/assets/1.jpg)
+![img2](src/assets/2.jpg)
 
 Also, user can subscribe to a specific search if he wants to be notified by email when new parameter-matched apartment appears.
 
-<img src="src/assets/3.jpg">
+![img3](src/assets/3.jpg)
 
 ## Prerequisites
 
