@@ -1,4 +1,6 @@
-<img src="src/assets/logo.png">
+<div style="text-align:center">
+    <img src="src/assets/logo.png">
+</div>
 
 # Apartment Search
 
